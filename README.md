@@ -101,8 +101,6 @@ SELECT DISTINCT martial_status FROM club_member_info_cleaned LIMIT 10;
 |single|
 |divored|
 
-
-
 - Correct the marital status 
 ```SQL
 UPDATE club_member_info_cleaned SET martial_status = 'unknown' WHERE martial_status = "";
@@ -119,6 +117,37 @@ The result
 |divorced|
 |unknown|
 |single|
+
+## Correct the phone column
+- Check the data 
+```SQL
+SELECT phone AS "wrong_phone_numer" FROM club_member_info_cleaned WHERE LENGTH(phone) <> 12 ;
+```
+|wrong_phone_numer|
+|-----------------|
+|814-2985|
+|14-900-1376|
+||
+||
+||
+||
+||
+||
+|43-892-2116|
+||
+|575-8072|
+|559-115310|
+||
+||
+
+- Set the wrong value to "unknown" 
+```SQL
+UPDATE club_member_info_cleaned SET phone = "unknown" WHERE LENGTH(phone) <> 12;
+```
+The result
+|unknown_phone_numer|
+|-----------------|
+|14|
 
 ## Correct the job_title column
 - Check the data 
