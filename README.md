@@ -19,9 +19,8 @@ The result
 |mendie alexandrescu|46|single|malexandrescu8@state.gov|504-918-4753|34 Delladonna Terrace,New Orleans,Louisiana|Systems Administrator III|3/12/1921|
 | fey kloss|52|married|fkloss9@godaddy.com|808-177-0318|8976 Jackson Park,Honolulu,Hawaii|Chemical Engineer|11/5/2014|
 
-## Make a copy of data table
-
-## Create table for data cleaning
+# Make a copy of the data table
+## Create a new table for data cleaning
 ```SQL
 CREATE TABLE club_member_info_cleaned (
 	full_name VARCHAR(50),
@@ -34,7 +33,7 @@ CREATE TABLE club_member_info_cleaned (
 	membership_date VARCHAR(50)
 );
 ```
-## Copy value from original table to new table
+## Copy all values from original table to the new table
 ```SQL
 INSERT INTO club_member_info_cleaned 
 SELECT * FROM club_member_info ;
