@@ -141,19 +141,37 @@ The result
 |39|
 
 ## Correct the membership_date 
-The data format of membership_date is CHAR, it might create difficulty in further calculations.
-Recommend sorting the membership date by "Year" in the new column membership_year
+- The data format of membership_date is CHAR, it might create difficulty in further calculations. Recommend sorting the membership date by "Year" in the new column membership_year
 ```SQL
 UPDATE club_member_info_cleaned
 SET membership_year = SUBSTR(membership_date, LENGTH(membership_date) - 3, 4)
 WHERE membership_date > 0;
 ```
+- Check the data
+```SQL
+SELECT DISTINCT membership_year FROM club_member_info_cleaned ORDER BY membership_year DESC ;
+```
 |membership_year|
 |---------------|
-|2013|
+|2022|
+|2021|
+|2020|
+|2019|
 |2018|
 |2017|
+|2016|
 |2015|
-|2019|
+|2014|
+|2013|
+|2012|
+|1921|
+|1919|
+|1917|
+|1916|
+|1915|
+|1914|
+|1913|
+|1912|
 
+We don't have enough information about this database, so we recommend not changing the year number.
 
