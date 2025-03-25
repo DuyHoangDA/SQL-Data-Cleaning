@@ -84,21 +84,6 @@ SELECT DISTINCT martial_status FROM club_member_info_cleaned LIMIT 10;
 |single|
 |divored|
 
-- Check the query
-  ```SQL
-SELECT martial_status AS marital_status FROM club_member_info_cleaned LIMIT 5;
-SELECT martial_status AS marital_status FROM club_member_info_cleaned WHERE martial_status = "";
-
-```
-|marital_status|
-|--------------|
-|married|
-|married|
-|divorced|
-||
-|married|
-
-
 - Correct the marital status 
 ```SQL
 UPDATE club_member_info_cleaned SET martial_status = 'unknown' WHERE martial_status = "";
@@ -108,3 +93,11 @@ UPDATE club_member_info_cleaned SET martial_status = 'divorced' WHERE martial_st
 ALTER TABLE club_member_info_cleaned 
 RENAME COLUMN martial_status TO marital_status;
 ```
+The result
+|marital_status|
+|--------------|
+|married|
+|divorced|
+|unknown|
+|single|
+
