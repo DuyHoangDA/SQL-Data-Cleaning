@@ -140,4 +140,9 @@ The result
 |-----------------|
 |39|
 
-
+## Correct the membership_date column
+- Shorten the date by "Year" and change the data type to Integer
+  ```SQL
+SELECT DISTINCT job_title FROM club_member_info_cleaned cmic ORDER BY job_title;
+SELECT COUNT(job_title) FROM club_member_info_cleaned WHERE job_title = "";
+```
