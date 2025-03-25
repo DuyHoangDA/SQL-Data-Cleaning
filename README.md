@@ -33,11 +33,19 @@ CREATE TABLE club_member_info_cleaned (
 	membership_date VARCHAR(50)
 );
 ```
+The result
+
+![image](https://github.com/user-attachments/assets/d9d2063f-ab94-4c57-80e0-6c489a12aff1)
+
+
 ## Copy all values from the original table to the new table
 ```SQL
 INSERT INTO club_member_info_cleaned 
 SELECT * FROM club_member_info ;
 ```
+The result
+
+![image](https://github.com/user-attachments/assets/b8a6da1f-bbb2-4eb2-9aef-ac5e5dd915a1)
 
 # Cleaning data
 ## Correct the inconsistent letter cases of Full name column
@@ -52,6 +60,15 @@ Once the result is correct, execute the correction
 UPDATE club_member_info_cleaned SET full_name = TRIM(full_name);
 UPDATE club_member_info_cleaned SET full_name = UPPER(full_name)
 ```
+The result
+|full_name|
+|---------|
+|ADDIE LUSH|
+|ROCK CRADICK|
+|SYDEL SHARVELL|
+|CONSTANTIN DE LA CRUZ|
+|GAYLOR REDHOLE|
+
 ## Correct the unrealistic age
 - Check the data 
 ```SQL
@@ -84,6 +101,8 @@ SELECT DISTINCT martial_status FROM club_member_info_cleaned LIMIT 10;
 |single|
 |divored|
 
+
+
 - Correct the marital status 
 ```SQL
 UPDATE club_member_info_cleaned SET martial_status = 'unknown' WHERE martial_status = "";
@@ -100,4 +119,23 @@ The result
 |divorced|
 |unknown|
 |single|
+
+## Correct the job_title column
+- Check the data 
+```SQL
+SELECT DISTINCT job_title FROM club_member_info_cleaned cmic ORDER BY job_title;
+SELECT COUNT(job_title) FROM club_member_info_cleaned WHERE job_title = "";
+```
+|COUNT(job_title)|
+|----------------|
+|39|
+
+- Set the empty value to NULL 
+```SQL
+UPDATE club_member_info_cleaned SET job_title = "unknown" WHERE job_title = "";
+'''
+The result
+|COUNT(job_title)|
+|----------------|
+|39|
 
