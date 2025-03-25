@@ -129,8 +129,6 @@ SELECT COUNT(job_title) FROM club_member_info_cleaned WHERE job_title = "";
 |empty_job_title|
 |-----------------|
 |39|
-|
-
 
 - Set the empty value to "unknown" 
 ```SQL
