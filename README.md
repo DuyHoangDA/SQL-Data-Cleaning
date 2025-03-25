@@ -130,10 +130,11 @@ SELECT COUNT(job_title) FROM club_member_info_cleaned WHERE job_title = "";
 |----------------|
 |39|
 
-- Set the empty value to NULL 
+- Set the empty value to "unknown" 
 ```SQL
 UPDATE club_member_info_cleaned SET job_title = "unknown" WHERE job_title = "";
-'''
+```
+
 The result
 |COUNT(job_title)|
 |----------------|
