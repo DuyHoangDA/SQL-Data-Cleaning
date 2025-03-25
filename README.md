@@ -65,9 +65,9 @@ SELECT SUBSTR(age,1,2) FROM club_member_info_cleaned WHERE age > 100;
 
 SELECT Median (age) FROM club_member_info_cleaned;
 ```
-- Correct the age column
+- Correct the unrealistic age
 ```SQL
 UPDATE club_member_info_cleaned SET age = SUBSTR(age,1,2) WHERE age > 100;
 
-UPDATE club_member_info_cleaned SET age = (SELECT Median (age) FROM club_member_info_cleaned) WHERE age = "";
+UPDATE club_member_info_cleaned SET age = (SELECT Median (age) FROM club_member_info_cleaned) WHERE age < 0;
 ```
