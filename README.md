@@ -126,9 +126,11 @@ The result
 SELECT DISTINCT job_title FROM club_member_info_cleaned cmic ORDER BY job_title;
 SELECT COUNT(job_title) FROM club_member_info_cleaned WHERE job_title = "";
 ```
-|COUNT(job_title)|
-|----------------|
+|empty_job_title|
+|-----------------|
 |39|
+|
+
 
 - Set the empty value to "unknown" 
 ```SQL
@@ -136,7 +138,8 @@ UPDATE club_member_info_cleaned SET job_title = "unknown" WHERE job_title = "";
 ```
 
 The result
-|COUNT(job_title)|
-|----------------|
+|unknown_job_title|
+|-----------------|
 |39|
+
 
