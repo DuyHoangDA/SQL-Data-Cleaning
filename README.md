@@ -140,9 +140,20 @@ The result
 |-----------------|
 |39|
 
-## Correct the membership_date column
-- Shorten the date by "Year" and change the data type to Integer
-  ```SQL
-SELECT DISTINCT job_title FROM club_member_info_cleaned cmic ORDER BY job_title;
-SELECT COUNT(job_title) FROM club_member_info_cleaned WHERE job_title = "";
+## Correct the membership_date 
+The data format of membership_date is CHAR, it might create difficulty in further calculations.
+Recommend sorting the membership date by "Year" in the new column membership_year
+```SQL
+UPDATE club_member_info_cleaned
+SET membership_year = SUBSTR(membership_date, LENGTH(membership_date) - 3, 4)
+WHERE membership_date > 0;
 ```
+|membership_year|
+|---------------|
+|2013|
+|2018|
+|2017|
+|2015|
+|2019|
+
+
