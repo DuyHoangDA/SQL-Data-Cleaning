@@ -38,3 +38,17 @@ CREATE TABLE club_member_info_cleaned (
 INSERT INTO club_member_info_cleaned 
 SELECT * FROM club_member_info ;
 ```
+
+# Cleaning data
+## Correct the inconsistent letter cases of Full name column
+
+Check the code
+```SQL
+SELECT TRIM(full_name) FROM club_member_info_cleaned;
+SELECT UPPER(full_name) FROM club_member_info_cleaned;
+```
+Once the result is correct, execute the correction
+```SQL
+UPDATE club_member_info_cleaned SET full_name = TRIM(full_name);
+UPDATE club_member_info_cleaned SET full_name = UPPER(full_name)
+```
