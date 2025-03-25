@@ -71,3 +71,40 @@ UPDATE club_member_info_cleaned SET age = SUBSTR(age,1,2) WHERE age > 100;
 
 UPDATE club_member_info_cleaned SET age = (SELECT Median (age) FROM club_member_info_cleaned) WHERE age < 0;
 ```
+## Correct the marital status column
+- Check the data 
+```SQL
+SELECT DISTINCT martial_status FROM club_member_info_cleaned LIMIT 10;
+```
+|martial_status|
+|--------------|
+|married|
+|divorced|
+||
+|single|
+|divored|
+
+- Check the query
+  ```SQL
+SELECT martial_status AS marital_status FROM club_member_info_cleaned LIMIT 5;
+SELECT martial_status AS marital_status FROM club_member_info_cleaned WHERE martial_status = "";
+
+```
+|marital_status|
+|--------------|
+|married|
+|married|
+|divorced|
+||
+|married|
+
+
+- Correct the marital status 
+```SQL
+UPDATE club_member_info_cleaned SET martial_status = 'unknown' WHERE martial_status = "";
+
+UPDATE club_member_info_cleaned SET martial_status = 'divorced' WHERE martial_status = "divorced";
+
+ALTER TABLE club_member_info_cleaned 
+RENAME COLUMN martial_status TO marital_status;
+```
